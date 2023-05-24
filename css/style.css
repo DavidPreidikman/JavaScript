@@ -129,6 +129,62 @@ ul {
 	font-size: 3rem;
 }
 
+/*CAROUSEL*/
+.carousel-inner .active .d-md-block{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom:400px; 
+  height: 25vh;
+  margin-bottom: 40px;
+}
+.carousel-inner .active img{
+  filter: brightness(0.6);
+  height: 90vh;
+}
+.carousel-inner .active .d-md-block h5{
+  font-size: 90px;
+  animation: 10s;
+  animation-name: aparecer;
+  margin-top: 20px;
+}
+@keyframes aparecer{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.carousel-inner .active .d-md-block p{
+  font-size: 25px;
+  animation: 12s;
+  animation-name: aparecer;
+  margin-top: auto;
+}
+@keyframes aparecer{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+} 
+
+.carousel-caption {
+  font-family: 'Merienda', cursiva;
+    position: absolute;
+    right: 15%;
+    bottom: 120px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+
 /*CARDS PRODUCTOS*/
 .contenedor-productos{
   margin-top: 3%;

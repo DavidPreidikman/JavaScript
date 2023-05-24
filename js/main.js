@@ -126,7 +126,11 @@ function guardarCarritoStorage() {
 
 
 
-function saludar(){
+
+
+
+
+/* function saludar(){
 	respuesta = prompt ("Enter your age: ");
 	if (respuesta >= 18){
 		alert ("Welcome to G.O.A.T! The best online shoe store.");
@@ -135,4 +139,101 @@ function saludar(){
 	}
 }
 
+saludar () */
+
+function saludar(){
+	respuesta = prompt ("Enter your age: ");
+	if (respuesta >= 18){
+		Swal.fire({
+            title: 'Welcome to G.O.A.T.! The best online shoe store.',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+	} else {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "Must be over 18 years old.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              swalWithBootstrapButtons.fire(
+                'Welcome to G.O.A.T! The best online shoe store.',
+                'Adult supervision is recommended!',
+                'success'
+              )
+            } else if (
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Thank you for understanding our policy.',
+                'G.O.A.T.',
+                'error'
+              )
+            }
+          })
+	}
+}
+
 saludar ()
+
+/* Finalizar proceso de compra*/
+let a = document.getElementById("continuar");
+a.onclick = finalizarCompra
+
+function finalizarCompra(evento){
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: "You are about to make a purchase.",
+        text: "Please confirm",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Continue',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Thank you for buying with us!',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+            
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'You have canceled the purchase',
+            'We have keeped the products in the chart for you.',
+            'error'
+          )
+        }
+      })
+}
+   
